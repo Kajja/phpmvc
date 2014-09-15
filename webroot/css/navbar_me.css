@@ -3,11 +3,11 @@
  * Changed to only style li-items instead of a.
  */
 #navbar {
-  margin-bottom: 44px;
+  margin-bottom: 20px;
 }
 
 .navbar {
-  background-color: #eee;
+  background-color: #FAEB8C;
   border-radius: 4px;
 }
  
@@ -30,18 +30,16 @@
   text-decoration: none;
   color: inherit;
   white-space: nowrap; 
-
 }
 
 .navbar li:hover {
   color: #666; 
-  border-color: #666;
-  background-color: #ddd;
+  background-color: #96C7F2;
 } 
  
 .navbar li.selected-parent, 
 .navbar li.selected {
-  color: #222; 
+  color: #222;
   border-color: #222;
 }
 
@@ -67,6 +65,7 @@
 .navbar li li:hover {
   color: #666; 
   border-color: #666;
+  background-color: #96C7F2
 }
 
 .navbar li li.selected {

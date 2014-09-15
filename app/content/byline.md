@@ -1,0 +1,1 @@
+Mikael studerar för tillfället utveckling med PHP och MVC-ramverk och går även en kurs om Affärssystem. Förutom webbutveckling har han också ett stort intresse för ekonomi.
