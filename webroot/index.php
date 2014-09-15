@@ -37,7 +37,11 @@ $app->router->add('source', function() use ($app) {
 // Using a app-specific theme configuration (overrides any earlier config-file specified)
 $app->theme->configure(ANAX_APP_PATH . 'config/theme_me.php');
 
+// Using a app-specific navbar configuration
 $app->navbar->configure(ANAX_APP_PATH . 'config/navbar_me.php');
+
+//Configuring how generated URLs vill look like
+$app->url->setUrlType(\Anax\Url\CUrl::URL_CLEAN);
 
 // Handling request
 $app->router->handle();
