@@ -1,3 +1,30 @@
+Kmom02: Kontroller och modeller
+-------------------------------
+**Reflektera över svårigheter, problem, lösningar, erfarenheter, lärdomar, resultatet, etc.**
+
+Det gäller som skrivs i uppgiften att följa trådarna från klass/fil till klass/fil och försöka förstå hur det hänger ihop. Jag hade först lite problem med att installera Composer lokalt, fick "aktivera" tillägget "extension=php_openssl.dll" i php.ini och sedan fungerade det bra. Det tog en stund att sätta sig in i Phalcon-ramverket. I det ramverket verkar det ju som att deras Dispatcher är en central komponent, allt verkar hanteras av denna. Uppgiften gjorde att man fick möjlighet att fördjupa sin förståelse för Anax-MVC. Det är ju inte helt självklart t.ex. hur svaret till webbläsaren sätts ihop, att man göra render() på template-vyn och att det sedan i denna template-vy så görs render på de vyer som finns i contanern views utifrån vilken region man angett osv. Strukturen är ju lite dold. I Phalcon har man ju i sitt förslag på katalogstruktur en katalog för modellerna. Det kanske inte är så dumt, så får man en tydligare struktur. Det verkar ju som att Phalcon ramverket använder en dispatcher lite annorlunda än Anax-MVC, där det mesta verkar hanteras av dispatchern i Phalcon-fallet. Att man i Phalcon kan definiera mönster som man matchar mot de sökvägar/routes man får i http-requesten verkar ju också väldigt praktiskt. Vad jag tycker att jag fick en bättre förståelse är hur ramverket hänger ihop. 
+
+**Hur känns det att jobba med Composer?**
+
+Strukturen i Composer tyckte jag var tydlig och enkel att använda, i alla fall för den grundläggande funktionaliteten (djupare än så har jag inte gått). Var först inte helt på det klara med kopplingen mellan Composer och Packagist. Hade Packagist någon speciell koppling till Composer eller var det bara ett exempel på en av många Composer-repositories? Det visade sig ju att de är hårt kopplade, där Packagist är förinställd i Composer, även om man kan ange andra Composer-repositories i sin composer.json fil. Har inte tidigare satt mig in i hur pakethanterare fungerar, så det var väldigt lärorikt. Att en katalog blir ett paket om den innehåller en composer.json fil kändes också "snyggt", så att man inte behöver någon ytterliggare definitionsfil för att skapa ett paket.
+
+**Vad tror du om de paket som finns i Packagist, är det något du kan tänka dig att använda och hittade du något spännande att inkludera i ditt ramverk?**
+
+PHPUnit. I Phalcon fanns det metoder som man kunde använda om man ville skapa ett REST-tjänst. Tänkte på framförallt, ..
+
+**Hur var begreppen att förstå med klasser som kontroller som tjänster som dispatchas, fick du ihop allt?**
+
+Tror jag fick ihop det. Jag är inte helt säker på att jag ännu helt förstår nyttan med att ha kontrollers som tjänster. Det kanske är praktiskt om man börjar arbeta enligt "hierarkisk MVC" då man kan plocka från olika kontrollers för att hantera en http-request (fast det känns också som att detta kan resultera i en del svåröverskådliga beroenden).
+
+**Hittade du svagheter i koden som följde med phpmvc/comment? Kunde du förbättra något?**
+Ändrade tiden i tmp
+Flyttade Kommentar in under div-comments
+Lite tveksamt när man förutsätter att filerna heter på ett visst sätt.
+Gjorde om CommentInSession till en tjänst "comments". Får då CommentController lite lösare kopplad till den modell som implementerar modellen, dvs. har möjligthet att ändra implementeringen utan att CommentController påverkas. Får även bort duplicering av kod för skapande av CommentInSession-objekt och namnet inte kopplat mot Session heller.
+Ev. skapa interface för koppling som modellerna ska implementera.
+Lite svårt att hålla koll på när man kan använda $di->tjänst, $this->di->tjänst eller $this->tjänst, dvs. i vilket sammanhang/scope befinner man sig t.ex. i när man skriver php-kod i en template fil?
+
+
 Kmom01: PHP-baserade och MVC-inspirerande ramverk
 -------------------------------------------------
 Det var en intressant uppgift då den gav en ganska djup inblick i hur MVC-ramverk kan vara uppbyggda. Jag läste på lite om MVC generellt, innan kursen började, men tyckte att artikeln [PHP-baserade och MVC-inspirerade ramverk, vad betyder det?](http://dbwebb.se/kunskap/php-baserade-och-mvc-inspirerade-ramverk-vad-betyder-det) gav mig mer MVC-"kött på benen". Jag fick en förståelse för att det inte finns ett sätt att skapa ett MVC-ramverk, t.ex. att kontroller och modell kan var olika "tjocka" i olika ramverk.
