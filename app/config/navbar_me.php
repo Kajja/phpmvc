@@ -23,6 +23,26 @@ return [
             'text'  => 'Redovisning',   
             'url'   => 'redovisning',   
             'title' => 'Redovisning',
+/*
+            'submenu' => [
+                'items' => [
+
+                    // This is a menu item of the submenu
+                    'item 1'  => [
+                        'text'  => 'Kmom1',   
+                        'url'   => 'redovisning/kmom1',  
+                        'title' => 'Kursmoment 1'
+                    ],
+
+                    // This is a menu item of the submenu
+                    'item 2'  => [
+                        'text'  => 'Kmom2',   
+                        'url'   => 'redovisning/kmom2',  
+                        'title' => 'Kursmoment 2'
+                    ],
+                ],
+            ],
+            */
         ],
  
         // This is a menu item
