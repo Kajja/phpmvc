@@ -106,6 +106,6 @@ class CommentsInSession implements \Anax\DI\IInjectionAware
 
         $this->context = $context;
         $this->key = $context . '-' . $this->key;
-        echo $this->key;
+
     }
 }
