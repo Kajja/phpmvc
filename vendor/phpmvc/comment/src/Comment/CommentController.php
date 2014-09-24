@@ -18,7 +18,7 @@ class CommentController implements \Anax\DI\IInjectionAware
      */
     public function viewAction()
     {
-        //Interface towards comments data
+        // Interface towards comments data
         $comments = $this->di->comments;
 
         $all = $comments->findAll();
@@ -52,13 +52,66 @@ class CommentController implements \Anax\DI\IInjectionAware
             'ip'        => $this->request->getServer('REMOTE_ADDR'),
         ];
 
-        //Interface towards comments data
+        // Interface towards comments data
         $comments = $this->di->comments;
 
         $comments->add($comment);
 
         $this->response->redirect($this->request->getPost('redirect'));
     }
+
+
+    /**
+     * Display comment info for editing
+     *
+     *  @return void
+     */
+    public function editAction($commentId)
+    {
+
+        // Collect data from model
+        $comments = $this->di->comments;
+        $comment = $comments->find($commentId);
+
+        // Add view with the fetched information
+        $this->di->views->add('comment/form', [
+            'mail'      => $comment['mail'],
+            'web'       => $comment['web'],
+            'name'      => $comment['name'],
+            'content'   => $comment['content'],
+            'output'    => null,
+            'fieldlabel'=> 'Uppdatera kommentar',
+            'update'    => true,
+            'id'        => $commentId
+        ]);
+
+    }
+
+
+    /**
+     * Update a comment
+     *
+     * @return void
+     */
+
+    public function updateAction($commentId)
+    {
+
+        $comment = [
+            'content'   => $this->request->getPost('content'),
+            'name'      => $this->request->getPost('name'),
+            'web'       => $this->request->getPost('web'),
+            'mail'      => $this->request->getPost('mail'),
+            'timestamp' => time(),
+            'ip'        => $this->request->getServer('REMOTE_ADDR'),
+        ];
+
+        $this->di->comments->updateComment($commentId, $comment);
+
+        // Reloads the page to display changes
+        $this->response->redirect($this->url->create(''));
+    }
+
 
 
     /**
@@ -69,10 +122,13 @@ class CommentController implements \Anax\DI\IInjectionAware
     public function removeAction($commentId) 
     {
 
-        //Interface towards comments data
+        // Interface towards comments data
         $comments = $this->di->comments;
 
         $comments->deleteComment($commentId);
+
+        // Reloads the page to display changes
+        $this->response->redirect($this->url->create(''));
 
     }
 
@@ -90,7 +146,7 @@ class CommentController implements \Anax\DI\IInjectionAware
             $this->response->redirect($this->request->getPost('redirect'));
         }
 
-        //Interface towards comments data
+        // Interface towards comments data
         $comments = $this->di->comments;
 
         $comments->deleteAll();

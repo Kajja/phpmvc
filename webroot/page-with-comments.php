@@ -19,8 +19,19 @@ $di->set('CommentController', function() use ($di) {
 $di->set('comments', function() use ($di) {
     $comments = new \Phpmvc\Comment\CommentsInSession();
     $comments->setDI($di);
+    $comments->setContext($di->url->create(''));
     return $comments;
 });
+
+/*
+//Test
+echo 'BaseUrl: ' . $di->request->getBaseUrl() . '<br>';
+echo 'SiteUrl: ' . $di->request->getSiteUrl() . '<br>';
+echo 'Route: ' . $di->request->getRoute() . '<br>';
+echo 'CurrentUrl: ' . $di->request->getCurrentUrl() . '<br>';
+echo 'Url-asset: ' . $di->url->asset('kommentarssida') . '<br>';
+echo 'Url-create: ' . $di->url->create('');
+*/
 
 $app = new \Anax\Kernel\CAnax($di);
 
@@ -29,6 +40,8 @@ $app->router->add('', function() use ($app) {
 
     $app->theme->setTitle("Welcome to Anax Guestbook");
     $app->views->add('comment/index');
+
+    $app->theme->addStylesheet('css/comments.css');
 
     $app->dispatcher->forward([
         'controller' => 'comment',
@@ -41,6 +54,8 @@ $app->router->add('', function() use ($app) {
         'name'      => null,
         'content'   => null,
         'output'    => null,
+        'fieldlabel'=> 'Kommentera',
+        'update'    => false
     ]);
 });
 
