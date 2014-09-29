@@ -1,6 +1,6 @@
 <div class='comment-form'>
     <form method=post>
-        <input type=hidden name="redirect" value="<?=$this->url->create('')?>">
+        <input type=hidden name="redirect" value="<?=$this->request->getCurrentUrl()?>">
         <fieldset>
         <legend><?=$fieldlabel?></legend>
         <p><label>Kommentar:<br/><textarea name='content'><?=$content?></textarea></label></p>
@@ -14,7 +14,7 @@
             <input type='submit' name='doRemoveAll' value='Ta bort alla' onClick="this.form.action = '<?=$this->url->create('comment/remove-all')?>'"/>
         <?php else : ?>
             <input type='submit' name='update' value='Uppdatera' onClick="this.form.action = '<?=$this->url->create("comment/update/{$id}")?>'"/>
-            <input type='submit' name='cancel' value='Avbryt' onClick="this.form.action = '<?=$this->url->create('')?>'"/>
+            <input type='submit' name='cancel' value='Avbryt' onClick="this.form.action = '<?=$this->session->get('context')?>'"/>
         <?php endif; ?>    
         </p>
         <output><?=$output?></output>

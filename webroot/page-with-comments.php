@@ -23,7 +23,7 @@ $di->set('comments', function() use ($di) {
     return $comments;
 });
 
-/*
+
 //Test
 echo 'BaseUrl: ' . $di->request->getBaseUrl() . '<br>';
 echo 'SiteUrl: ' . $di->request->getSiteUrl() . '<br>';
@@ -31,7 +31,7 @@ echo 'Route: ' . $di->request->getRoute() . '<br>';
 echo 'CurrentUrl: ' . $di->request->getCurrentUrl() . '<br>';
 echo 'Url-asset: ' . $di->url->asset('kommentarssida') . '<br>';
 echo 'Url-create: ' . $di->url->create('');
-*/
+
 
 $app = new \Anax\Kernel\CAnax($di);
 

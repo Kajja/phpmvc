@@ -3,6 +3,22 @@
 // Bootstrapping (i.e. configurations, create framework object etc.)
 require __DIR__ . '/config_with_app.php';
 
+// Creating a controller service for comments
+$di->set('CommentController', function() use ($di) {
+    $controller = new Phpmvc\Comment\CommentController();
+    $controller->setDI($di);
+    return $controller;
+});
+
+// Creating a model service for comments
+$di->set('comments', function() use ($di) {
+    $comments = new \Phpmvc\Comment\CommentsInSession();
+    $comments->setDI($di);
+    $comments->setContext($di->request->getCurrentUrl());
+    return $comments;
+});
+
+
 // Defining routes
 $app->router->add('', function() use ($app) {
 
@@ -11,15 +27,36 @@ $app->router->add('', function() use ($app) {
     	'content' => $app->textFilter->doFilter($app->fileContent->get('about.md'), 'shortcode, markdown'),
         'byline' => $app->textFilter->doFilter($app->fileContent->get('byline.md'), 'shortcode, markdown'),
     ]);
+
+    // Adds the possibility to post comments on the page
+    \mife\Comment\CommentSetup::initComments($app);
+
 });
 
-$app->router->add('redovisning', function() use ($app) {
+$app->router->add('redovisning/kmom1', function() use ($app) {
 
     $app->theme->setTitle('Redovisning');
     $app->views->add('me/page', [
-        'content' => $app->textFilter->doFilter($app->fileContent->get('redovisning.md'), 'shortcode, markdown'),
+        'content' => $app->textFilter->doFilter($app->fileContent->get('kmom1.md'), 'shortcode, markdown'),
         'byline' => $app->textFilter->doFilter($app->fileContent->get('byline.md'), 'shortcode, markdown'),
     ]);
+
+    // Adds the possibility to post comments on the page
+    \mife\Comment\CommentSetup::initComments($app);
+
+});
+
+$app->router->add('redovisning/kmom2', function() use ($app) {
+
+    $app->theme->setTitle('Redovisning');
+    $app->views->add('me/page', [
+        'content' => $app->textFilter->doFilter($app->fileContent->get('kmom2.md'), 'shortcode, markdown'),
+        'byline' => $app->textFilter->doFilter($app->fileContent->get('byline.md'), 'shortcode, markdown'),
+    ]);
+
+    // Adds the possibility to post comments on the page
+    \mife\Comment\CommentSetup::initComments($app);
+    
 });
 
 $app->router->add('source', function() use ($app) {

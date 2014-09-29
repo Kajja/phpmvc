@@ -10,9 +10,7 @@ class CommentsInSession implements \Anax\DI\IInjectionAware
 {
     use \Anax\DI\TInjectable;
 
-    private $context = '';      // Context to be able to have several different
-                                // comment threads in site.
-    private $key = 'comment';   // Base key;
+    private $key = 'comment';
 
     /**
      * Add a new comment.
@@ -23,9 +21,11 @@ class CommentsInSession implements \Anax\DI\IInjectionAware
      */
     public function add($comment)
     {
+
         $comments = $this->session->get($this->key, []);
         $comments[] = $comment;
         $this->session->set($this->key, $comments);
+
     }
 
 
@@ -68,6 +68,7 @@ class CommentsInSession implements \Anax\DI\IInjectionAware
      */
     public function findAll()
     {
+
         return $this->session->get($this->key, []);
     }
 
@@ -97,15 +98,15 @@ class CommentsInSession implements \Anax\DI\IInjectionAware
     }
 
     /**
-     * Sets the context propery
+     * Sets the context
      *
      * @return void
      */
 
     public function setContext($context) {
 
-        $this->context = $context;
-        $this->key = $context . '-' . $this->key;
-
+        $this->key = $context . '-comment';
+        
+        return $this;
     }
 }
