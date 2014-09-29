@@ -29,7 +29,6 @@ class CommentController implements \Anax\DI\IInjectionAware
     }
 
 
-
     /**
      * Add a comment.
      *
@@ -38,7 +37,7 @@ class CommentController implements \Anax\DI\IInjectionAware
     public function addAction()
     {
         $isPosted = $this->request->getPost('doCreate');
-        
+
         if (!$isPosted) {
             $this->response->redirect($this->request->getPost('redirect'));
         }
@@ -54,7 +53,7 @@ class CommentController implements \Anax\DI\IInjectionAware
 
         // Interface towards comments data
         $comments = $this->di->comments;
-
+        $comments->setContext($this->session->get('context'));
         $comments->add($comment);
 
         $this->response->redirect($this->request->getPost('redirect'));
@@ -71,7 +70,10 @@ class CommentController implements \Anax\DI\IInjectionAware
 
         // Collect data from model
         $comments = $this->di->comments;
+        $comments->setContext($this->di->session->get('context'));
         $comment = $comments->find($commentId);
+
+        $this->theme->setTitle('Uppdatera kommentar');
 
         // Add view with the fetched information
         $this->di->views->add('comment/form', [
@@ -80,7 +82,7 @@ class CommentController implements \Anax\DI\IInjectionAware
             'name'      => $comment['name'],
             'content'   => $comment['content'],
             'output'    => null,
-            'fieldlabel'=> 'Uppdatera kommentar',
+            'fieldlabel'=> 'Kommentera',
             'update'    => true,
             'id'        => $commentId
         ]);
@@ -106,10 +108,12 @@ class CommentController implements \Anax\DI\IInjectionAware
             'ip'        => $this->request->getServer('REMOTE_ADDR'),
         ];
 
-        $this->di->comments->updateComment($commentId, $comment);
+        $comments = $this->di->comments;
+ 
+        $comments->setContext($this->session->get('context'))->updateComment($commentId, $comment);
 
         // Reloads the page to display changes
-        $this->response->redirect($this->url->create(''));
+        $this->response->redirect($this->session->get('context'));
     }
 
 
@@ -125,10 +129,12 @@ class CommentController implements \Anax\DI\IInjectionAware
         // Interface towards comments data
         $comments = $this->di->comments;
 
+        $comments->setContext($this->request->getPost('redirect'));
+
+        $comments->setContext($this->session->get('context'));
         $comments->deleteComment($commentId);
 
-        // Reloads the page to display changes
-        $this->response->redirect($this->url->create(''));
+        $this->response->redirect($this->session->get('context'));
 
     }
 
@@ -149,6 +155,7 @@ class CommentController implements \Anax\DI\IInjectionAware
         // Interface towards comments data
         $comments = $this->di->comments;
 
+        $comments->setContext($this->session->get('context'));
         $comments->deleteAll();
 
         $this->response->redirect($this->request->getPost('redirect'));

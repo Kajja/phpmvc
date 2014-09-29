@@ -8,7 +8,7 @@ return [
     // Use for styling the menu
     'class' => 'navbar',
  
-    // Here comes the menu strcture
+    // Here comes the menu structure
     'items' => [
 
         // This is a menu item
@@ -21,9 +21,9 @@ return [
         // This is a menu item
         'texts'  => [
             'text'  => 'Redovisning',   
-            'url'   => 'redovisning',   
+            'url'   => 'redovisning/kmom1',   
             'title' => 'Redovisning',
-/*
+
             'submenu' => [
                 'items' => [
 
@@ -42,7 +42,6 @@ return [
                     ],
                 ],
             ],
-            */
         ],
  
         // This is a menu item
