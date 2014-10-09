@@ -15,7 +15,8 @@ $app->router->add('', function() use ($app) {
 
 });
 
-$app->router->add('regioner', function() use ($app) {
+$app->router->add('regioner', function() use ($app) 
+    {
  
     $app->theme->addStylesheet('css/anax-grid/regions_demo.css');
     $app->theme->setTitle("Regioner");
@@ -33,9 +34,17 @@ $app->router->add('regioner', function() use ($app) {
                ->addString('footer-col-2', 'footer-col-2')
                ->addString('footer-col-3', 'footer-col-3')
                ->addString('footer-col-4', 'footer-col-4');
- 
+
     $app->views->add('fonttest/page', []);
 });
+
+$app->router->add('typsnitt', function() use ($app) 
+    {
+        $app->theme->setTitle("Typsnittstest");
+        $app->views->add('fonttest/lydia', [], 'main');
+        $app->views->add('fonttest/lydia', [], 'sidebar');
+
+    });
 
 // Using a app-specific theme configuration (overrides any earlier config-file specified)
 $app->theme->configure(ANAX_APP_PATH . 'config/theme-grid.php');

@@ -18,6 +18,7 @@ $di->set('comments', function() use ($di) {
     return $comments;
 });
 
+
 // Defining routes
 $app->router->add('', function() use ($app) {
 
@@ -71,7 +72,7 @@ $app->router->add('source', function() use ($app) {
 });
 
 // Using a app-specific theme configuration (overrides any earlier config-file specified)
-$app->theme->configure(ANAX_APP_PATH . 'config/theme-kajja.php');
+$app->theme->configure(ANAX_APP_PATH . 'config/theme_me.php');
 
 // Using a app-specific navbar configuration
 $app->navbar->configure(ANAX_APP_PATH . 'config/navbar_me.php');
