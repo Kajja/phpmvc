@@ -1,4 +1,4 @@
-<article class='article1'>
+<article class='page'>
 <?=$content?>
 
 <?php if(isset($byline)) : ?>

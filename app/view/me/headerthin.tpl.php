@@ -1,0 +1,1 @@
+<div class='thin'><span><?=$text?></span><img src='<?=$logo;?>' alt='logo'/></div>

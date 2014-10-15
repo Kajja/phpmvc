@@ -18,23 +18,87 @@ $di->set('comments', function() use ($di) {
     return $comments;
 });
 
+// Creating a controller service for testing the theme
+$di->set('ThemeController', function() use ($di) {
+    $controller = new \mife\Theme\ThemeController();
+    $controller->setDI($di);
+    return $controller;
+});
+
 // Defining routes
+
+// Default route
 $app->router->add('', function() use ($app) {
 
-    $app->theme->setTitle('Lite om mig');
-    $app->views->add('me/page', [
-    	'content' => $app->textFilter->doFilter($app->fileContent->get('about.md'), 'shortcode, markdown'),
-        'byline' => $app->textFilter->doFilter($app->fileContent->get('byline.md'), 'shortcode, markdown'),
-    ]);
+    $app->theme->setTitle('Välkommen');
+    $app->theme->setVariable('bodyClasses', 'front');
 
-    // Adds the possibility to post comments on the page
-    \mife\Comment\CommentSetup::initComments($app);
+    $app->views->add('me/headerthin', [
+            'logo' => $app->url->asset('img/kaja.png'),
+            'text' => '-< -< -<'], 
+        'header');
+
+    $app->views->add('jumbotron/jumbotron', [
+            'header' => 'Välkommen',
+            'content' =>  $app->textFilter->doFilter($app->fileContent->get('welcome-text.md'), 'shortcode, markdown')],
+        'flash');
+
+    $app->views->add('content/panel', [
+            'route' => 'about', 
+            'iconClasses' => 'fa fa-smile-o fa-align-center fa-fw', 
+            'text' => 'Lite om mig'], 
+        'panel-col-1');
+    
+    $app->views->add('content/panel', [
+            'route' => 'redovisning/kmom1', 
+            'iconClasses' => 'fa fa-pencil fa-align-center fa-fw', 
+            'text' => 'Mina redovisningar'], 
+        'panel-col-2');
+    
+    $app->views->add('content/panel', [
+        'route' => 'theme-show.php', 
+        'iconClasses' => 'fa fa-sitemap fa-align-center fa-fw', 
+        'text' => 'Temat'], 
+    'panel-col-3');
+
+    $app->views->add('content/panel', [
+        'route' => 'source', 
+        'iconClasses' => 'fa fa-code fa-align-center fa-fw', 
+        'text' => 'Koden'], 
+   'panel-col-4');
 
 });
 
+// 'About' route
+$app->router->add('about', function() use ($app) {
+
+    $app->theme->setTitle('Välkommen!');
+    $app->theme->setVariable('bodyClasses', 'page-container');
+
+    // Adding a navbar
+    $app->views->add(['callback' => function() use ($app) {
+                return $app->navbar->create();
+                }
+            ], [], 'nav', -1);
+
+    $app->views->add('me/page', [
+        'content' => $app->textFilter->doFilter($app->fileContent->get('about.md'), 'shortcode, markdown'),
+        'byline' => $app->textFilter->doFilter($app->fileContent->get('byline.md'), 'shortcode, markdown'),
+    ]);
+});
+
+// 'Redovisning/Kmom1' route
 $app->router->add('redovisning/kmom1', function() use ($app) {
 
     $app->theme->setTitle('Redovisning');
+    $app->theme->setVariable('bodyClasses', 'page-container');
+
+    // Adding a navbar
+    $app->views->add(['callback' => function() use ($app) {
+                return $app->navbar->create();
+                }
+            ], [], 'nav', -1);
+
     $app->views->add('me/page', [
         'content' => $app->textFilter->doFilter($app->fileContent->get('kmom1.md'), 'shortcode, markdown'),
         'byline' => $app->textFilter->doFilter($app->fileContent->get('byline.md'), 'shortcode, markdown'),
@@ -45,9 +109,18 @@ $app->router->add('redovisning/kmom1', function() use ($app) {
 
 });
 
+// 'Redovisning/Kmom2' route
 $app->router->add('redovisning/kmom2', function() use ($app) {
 
     $app->theme->setTitle('Redovisning');
+    $app->theme->setVariable('bodyClasses', 'page-container');
+
+    // Adding a navbar
+    $app->views->add(['callback' => function() use ($app) {
+                return $app->navbar->create();
+                }
+            ], [], 'nav', -1);
+
     $app->views->add('me/page', [
         'content' => $app->textFilter->doFilter($app->fileContent->get('kmom2.md'), 'shortcode, markdown'),
         'byline' => $app->textFilter->doFilter($app->fileContent->get('byline.md'), 'shortcode, markdown'),
@@ -58,15 +131,47 @@ $app->router->add('redovisning/kmom2', function() use ($app) {
     
 });
 
+// 'Redovisning/Kmom3' route
+$app->router->add('redovisning/kmom3', function() use ($app) {
+
+    $app->theme->setTitle('Redovisning');
+    $app->theme->setVariable('bodyClasses', 'page-container');
+
+    // Adding a navbar
+    $app->views->add(['callback' => function() use ($app) {
+                return $app->navbar->create();
+                }
+            ], [], 'nav', -1);
+
+    $app->views->add('me/page', [
+        'content' => $app->textFilter->doFilter($app->fileContent->get('kmom3.md'), 'shortcode, markdown'),
+        'byline' => $app->textFilter->doFilter($app->fileContent->get('byline.md'), 'shortcode, markdown'),
+    ]);
+
+    // Adds the possibility to post comments on the page
+    \mife\Comment\CommentSetup::initComments($app);
+    
+});
+
+// 'Kod' route
 $app->router->add('source', function() use ($app) {
 
     $app->theme->setTitle('Källkod');
+    $app->theme->setVariable('bodyClasses', 'page-container');
     $app->theme->addStylesheet('css/source.css');
+
+    // Adding a navbar
+    $app->views->add(['callback' => function() use ($app) {
+                return $app->navbar->create();
+                }
+            ], [], 'nav', -1);
+
     $source = new \Mos\Source\CSource([
     	'secure_dir' => '..',
     	'base_dir' => '..',
     	'add_ignore' => ['.htaccess'],
     ]);
+
     $app->views->add('me/source', ['content' => $source->View(),]);
 });
 

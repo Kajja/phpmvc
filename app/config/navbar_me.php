@@ -18,6 +18,12 @@ return [
             'title' => 'Hem'
         ],
  
+        'about'  => [
+            'text'  => 'Om',   
+            'url'   => 'about',  
+            'title' => 'Om'
+        ],       
+
         // This is a menu item
         'texts'  => [
             'text'  => 'Redovisning',   
@@ -27,29 +33,38 @@ return [
             'submenu' => [
                 'items' => [
 
-                    // This is a menu item of the submenu
                     'item 1'  => [
                         'text'  => 'Kmom1',   
                         'url'   => 'redovisning/kmom1',  
                         'title' => 'Kursmoment 1'
                     ],
 
-                    // This is a menu item of the submenu
                     'item 2'  => [
                         'text'  => 'Kmom2',   
                         'url'   => 'redovisning/kmom2',  
                         'title' => 'Kursmoment 2'
                     ],
+
+                    'item 3'  => [
+                        'text'  => 'Kmom3',   
+                        'url'   => 'redovisning/kmom3',  
+                        'title' => 'Kursmoment 3'
+                    ],
                 ],
             ],
         ],
+
+        'theme' => [
+            'text'  =>'Temat', 
+            'url'   =>'theme-show.php',  
+            'title' => 'Temat',
+        ],
  
-        // This is a menu item
         'source' => [
             'text'  =>'Källkod', 
             'url'   =>'source',  
             'title' => 'Källkod'
-        ],
+        ]
     ],
  
     // Callback tracing the current selected menu item base on scriptname

@@ -1,7 +1,7 @@
 <hr>
 <?php if (is_array($comments)) : ?>
 <div class='comments'>
-	<h2>Kommentarer (<?=count($comments)?> st)</h2>
+	<h4>Kommentarer (<?=count($comments)?> st)</h4>
 <?php foreach ($comments as $id => $comment) : ?>
 	<div class='comment'>
 		<img id='profile' src='http://www.gravatar.com/avatar/<?= md5(strtolower(trim($comment['mail']))) . '.jpg?s=80'?>' alt='Profilbild'/>

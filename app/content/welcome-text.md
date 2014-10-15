@@ -1,0 +1,1 @@
+Denna webbplats är framtagen som en del av kursen *Databasdrivna webbapplikationer med PHP och MVC-ramverk*. Här kan du läsa lite om mig, se redovisningar och kanske mer framöver.
