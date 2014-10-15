@@ -65,7 +65,7 @@ return [
         'title_append' => ' | Mikael Feuk',
 
         // Stylesheets
-        'stylesheets' => ['css/kajja/style.php?file=kajjashow'],
+        'stylesheets' => ['css/stylephp/style.php?file=../kajja/kajjashow'],
 
         // Inline style
         'style' => null,
