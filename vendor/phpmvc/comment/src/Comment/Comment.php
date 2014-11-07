@@ -2,13 +2,13 @@
 
 namespace Phpmvc\Comment;
 
-use \Anax\MVC\CDataBaseModel;
+use \Anax\MVC\CDatabaseModel;
 
 /**
  * Model class representing Comment(s)
  *
  */
-class Comment extends CDataBaseModel
+class Comment extends CDatabaseModel
 {
     
     /**
