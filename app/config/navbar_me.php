@@ -50,6 +50,11 @@ return [
                         'url'   => 'redovisning/kmom3',  
                         'title' => 'Kursmoment 3'
                     ],
+                    'item 4'  => [
+                        'text'  => 'Kmom4',   
+                        'url'   => 'redovisning/kmom4',  
+                        'title' => 'Kursmoment 4'
+                    ],
                 ],
             ],
         ],
@@ -58,6 +63,51 @@ return [
             'text'  =>'Temat', 
             'url'   =>'theme-show.php',  
             'title' => 'Temat',
+        ],
+
+        'users' => [
+            'text'  => 'Användare',
+            'url'   => 'users/list',
+            'title' =>  'Användare',
+            'submenu' => [
+                'items' => [
+                    'item 1'  => [
+                        'text'  => 'Alla',   
+                        'url'   => 'users/list',  
+                        'title' => 'Alla användare'
+                    ],
+
+                    'item 2'  => [
+                        'text'  => 'Aktiva',   
+                        'url'   => 'users/active',  
+                        'title' => 'Aktiva användare'
+                    ],
+
+                    'item 3'  => [
+                        'text'  => 'Inaktiva',   
+                        'url'   => 'users/inactive', 
+                        'title' => 'Inaktiva användare'
+                    ],
+
+                    'item 4'  => [
+                        'text'  => 'Papperskorg',   
+                        'url'   => 'users/waste', 
+                        'title' => 'Papperskorg'
+                    ],
+
+                    'item 5'  => [
+                        'text'  => 'Skapa användare',   
+                        'url'   => 'users/add', 
+                        'title' => 'Skapa användare'
+                    ],
+
+                    'item 6'  => [
+                        'text'  => 'Återställ DB',   
+                        'url'   => 'users/setup', 
+                        'title' => 'Återställ databas'
+                    ]
+                ]
+            ]
         ],
  
         'source' => [

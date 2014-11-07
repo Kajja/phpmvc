@@ -41,7 +41,7 @@ return [
             ], 
             'sort' => -1
         ],
-/*        [
+        [
             'region' => 'nav',
             'template' => ['callback' => function() {
                 return $this->di->navbar->create();
@@ -49,7 +49,7 @@ return [
             ],
            'data' => [],
            'sort' => -1
-        ],*/
+        ],
     ],
 
 

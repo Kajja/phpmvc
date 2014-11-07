@@ -3,20 +3,6 @@
 // Bootstrapping (i.e. configurations, create framework object etc.)
 require __DIR__ . '/config_with_app.php';
 
-// Creating a controller service for comments
-$di->set('CommentController', function() use ($di) {
-    $controller = new Phpmvc\Comment\CommentController();
-    $controller->setDI($di);
-    return $controller;
-});
-
-// Creating a model service for comments
-$di->set('comments', function() use ($di) {
-    $comments = new \Phpmvc\Comment\CommentsInSession();
-    $comments->setDI($di);
-    $comments->setContext($di->request->getCurrentUrl());
-    return $comments;
-});
 
 // Creating a controller service for testing the theme
 $di->set('ThemeController', function() use ($di) {
@@ -75,12 +61,6 @@ $app->router->add('about', function() use ($app) {
     $app->theme->setTitle('Välkommen!');
     $app->theme->setVariable('bodyClasses', 'page-container');
 
-    // Adding a navbar
-    $app->views->add(['callback' => function() use ($app) {
-                return $app->navbar->create();
-                }
-            ], [], 'nav', -1);
-
     $app->views->add('me/page', [
         'content' => $app->textFilter->doFilter($app->fileContent->get('about.md'), 'shortcode, markdown'),
         'byline' => $app->textFilter->doFilter($app->fileContent->get('byline.md'), 'shortcode, markdown'),
@@ -92,12 +72,6 @@ $app->router->add('redovisning/kmom1', function() use ($app) {
 
     $app->theme->setTitle('Redovisning');
     $app->theme->setVariable('bodyClasses', 'page-container');
-
-    // Adding a navbar
-    $app->views->add(['callback' => function() use ($app) {
-                return $app->navbar->create();
-                }
-            ], [], 'nav', -1);
 
     $app->views->add('me/page', [
         'content' => $app->textFilter->doFilter($app->fileContent->get('kmom1.md'), 'shortcode, markdown'),
@@ -115,12 +89,6 @@ $app->router->add('redovisning/kmom2', function() use ($app) {
     $app->theme->setTitle('Redovisning');
     $app->theme->setVariable('bodyClasses', 'page-container');
 
-    // Adding a navbar
-    $app->views->add(['callback' => function() use ($app) {
-                return $app->navbar->create();
-                }
-            ], [], 'nav', -1);
-
     $app->views->add('me/page', [
         'content' => $app->textFilter->doFilter($app->fileContent->get('kmom2.md'), 'shortcode, markdown'),
         'byline' => $app->textFilter->doFilter($app->fileContent->get('byline.md'), 'shortcode, markdown'),
@@ -137,14 +105,24 @@ $app->router->add('redovisning/kmom3', function() use ($app) {
     $app->theme->setTitle('Redovisning');
     $app->theme->setVariable('bodyClasses', 'page-container');
 
-    // Adding a navbar
-    $app->views->add(['callback' => function() use ($app) {
-                return $app->navbar->create();
-                }
-            ], [], 'nav', -1);
-
     $app->views->add('me/page', [
         'content' => $app->textFilter->doFilter($app->fileContent->get('kmom3.md'), 'shortcode, markdown'),
+        'byline' => $app->textFilter->doFilter($app->fileContent->get('byline.md'), 'shortcode, markdown'),
+    ]);
+
+    // Adds the possibility to post comments on the page
+    \mife\Comment\CommentSetup::initComments($app);
+    
+});
+
+// 'Redovisning/Kmom4' route
+$app->router->add('redovisning/kmom4', function() use ($app) {
+
+    $app->theme->setTitle('Redovisning');
+    $app->theme->setVariable('bodyClasses', 'page-container');
+
+    $app->views->add('me/page', [
+        'content' => $app->textFilter->doFilter($app->fileContent->get('kmom4.md'), 'shortcode, markdown'),
         'byline' => $app->textFilter->doFilter($app->fileContent->get('byline.md'), 'shortcode, markdown'),
     ]);
 
@@ -160,20 +138,15 @@ $app->router->add('source', function() use ($app) {
     $app->theme->setVariable('bodyClasses', 'page-container');
     $app->theme->addStylesheet('css/source.css');
 
-    // Adding a navbar
-    $app->views->add(['callback' => function() use ($app) {
-                return $app->navbar->create();
-                }
-            ], [], 'nav', -1);
-
     $source = new \Mos\Source\CSource([
-    	'secure_dir' => '..',
-    	'base_dir' => '..',
-    	'add_ignore' => ['.htaccess'],
+        'secure_dir' => '..',
+        'base_dir' => '..',
+        'add_ignore' => ['.htaccess'],
     ]);
 
     $app->views->add('me/source', ['content' => $source->View(),]);
 });
+
 
 // Using a app-specific theme configuration (overrides any earlier config-file specified)
 $app->theme->configure(ANAX_APP_PATH . 'config/theme-kajja.php');

@@ -1,4 +1,4 @@
-<div class='comment-form'>
+<div class='comment-form page'>
     <form method=post>
         <input type=hidden name="redirect" value="<?=$this->request->getCurrentUrl()?>">
         <fieldset>

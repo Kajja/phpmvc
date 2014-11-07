@@ -9,4 +9,4 @@ require __DIR__.'/config.php';
 
 // Create services and inject into the app. 
 $di  = new \Anax\DI\CDIFactory();
-$app = new \Anax\Kernel\CAnax($di);
+$app = new \Anax\MVC\CApplicationBasic($di);
