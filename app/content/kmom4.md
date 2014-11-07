@@ -23,7 +23,7 @@ Inte direkt. Först valde jag att ha setProperties och getProperties i modellen 
 
 **Beskriv vilka vägval du gjorde och hur du valde att implementera kommentarer i databasen.**
 
-Funderade på om det skulle bli en separat tabell för varje sida där det finns kommentarer eller om man ska ha en tabell med alla kommenterar. Det blev det sista alternativet, det kändes som att det skulle krävas en del förändringar i basklassen annars, logiken där bygger ju på att tabellen heter samma som modellklassen. Kommentarerna får id:n som är unika för hela siten, vilket jag tycker är ok. Om man vill ha sidunika id:n kan man införa en kolumn page_id i tabellen.
+Funderade på om det skulle bli en separat tabell för varje sida där det finns kommentarer eller om man ska ha en tabell med alla kommenterar. Det blev det sista alternativet, det kändes som att det skulle krävas en del förändringar i basklassen annars, logiken där bygger ju på att tabellen heter samma som modellklassen. Kommentarerna får id:n som är unika för hela siten. Om man istället skulle vilja att varje sida har en egen id-serie så skulle man kunna införa en kolumn page_id i tabellen, alt. numrera dem utifrån när de skapades.
 
 **Gjorde du extrauppgiften? Beskriv i så fall hur du tänkte och vilket resultat du fick.**
 
