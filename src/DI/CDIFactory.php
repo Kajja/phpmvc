@@ -2,7 +2,7 @@
 
 namespace Anax\Di;
 
-use \Anax\Di\CDIFactoryDefault;
+use \Anax\DI\CDIFactoryDefault;
 
 class CDIFactory extends CDIFactoryDefault 
 {
