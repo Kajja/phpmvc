@@ -3,7 +3,7 @@ Kmom04: Databasdrivna modeller
 
 Det var en mastig uppgift, men har lärt mig mycket. Det var intressant att komma igång lite mer med modeller, så att man ser hela "MVC-bilden". Kändes också väldigt viktigt att förstå hur man lägger till moduler till ett ramverk, känns som att det är centralt, så som det funkar på "riktigt". Skapade en klass som ärver av CDIFactoryDefault där tjänsterna läggs till. Tänkte lite på principen att kod ska vara "open for extension, closed for modification".
 
-Stötte på många småproblem på vägen bl.a. var jag tvungen att uppgradera till php 5.5 för att få password_hash att fungera. De största problemen hade jag dock då jag skulle ersätta formulären för kommentarer med CForm-formulär. Flödet blev helt annorlunda i och med att formulären "självpostar" sig till samma sida. Då funkar det ju inte att i callback-metoderna till knapparna göra redirect till en annan url, då tappar man ju all POST-data:-). Fick "dispatcha" till kontrollern för kommentarerna istället.
+Stötte på många småproblem på vägen bl.a. var jag tvungen att uppgradera till php 5.5 för att få password_hash att fungera. De största problemen hade jag dock då jag skulle ersätta formulären för kommentarer med CForm-formulär. Flödet blev helt annorlunda i och med att formulären "självpostar" sig till samma sida. Då funkar det ju inte att i callback-metoderna till knapparna göra redirect till en annan url, då tappar man ju all POST-data:-). Fick istället "dispatcha" till kommentars-kontrollern i callback funktionerna.
 
 Märkte lite problem med att inte ha definierat ett interface som både CommentInSession och Comment/CDatabaseModel följer. Ex. find() ger ett objekt från CDataBaseModel och en array från CommentsInSession. Fick då göra en liten "adapter"-metod i Comment-klassen så att find() returnerar en array.
 
@@ -19,11 +19,11 @@ Jag har inte jobbat så mycket med relationsdatabaser så jag tycker det var sk�
 
 **Gjorde du några vägval, eller extra saker, när du utvecklade basklassen för modeller?**
 
-Inte direkt. Först valde jag att ha setProperties och getProperties i modellen och inte i basklassen, när jag utvecklade användarhanteringen. Tyckte att "properties" kan vara mer specifikt för den modell som man jobbar med, vilka properties man vill visa osv. Då jag flyttade kommentarerna till databasen så flyttade jag också dessa metoder till basklassen. Behöver man göra något specifikt för en modell så går ju metoderna att överskugga i subklassen. La till en metod deleteWhere, en lite mer flexibel delete-metod.
+Först valde jag att samla allt utom setProperties och getProperties i basklassen. Tänkte att "properties" kan vara lite mer specifikt kopplat till den modell som man jobbar med. Men då jag flyttade kommentarerna till databasen så flyttade jag också dessa metoder till basklassen, de fungerade ju bra som de var även för kommentarer. Behöver man göra något specifikt för en modell så går ju metoderna att överskugga i subklassen. La till en metod deleteWhere, en lite mer flexibel delete-metod.
 
 **Beskriv vilka vägval du gjorde och hur du valde att implementera kommentarer i databasen.**
 
-Funderade på om det skulle bli en separat tabell för varje sida där det finns kommentarer eller om man ska ha en tabell med alla kommenterar. Det blev det sista alternativet, det kändes som att det skulle krävas en del förändringar i basklassen annars, logiken där bygger ju på att tabellen heter samma som modellklassen. Kommentarerna får id:n som är unika för hela siten. Om man istället skulle vilja att varje sida har en egen id-serie så skulle man kunna införa en kolumn page_id i tabellen, alt. numrera dem utifrån när de skapades.
+Jag la upp det på samma sätt som för användarhanteringen dvs. skapade en klass Comment som ärver av basklassen. I Comment-klassen finns bara ett fåtal metoder. Det blev också en tabell för alla kommentarer, det kändes som att det skulle krävas en del förändringar i basklassen annars. En kolumn i tabellen talar om vilken sida en viss kommentar hör till. Kommentarerna får id:n som är unika för hela siten. Om man istället skulle vilja att varje sida har en egen id-serie så skulle man t.ex. kunna införa en kolumn page_id i tabellen eller numrera dem utifrån när de skapades.
 
 **Gjorde du extrauppgiften? Beskriv i så fall hur du tänkte och vilket resultat du fick.**
 
