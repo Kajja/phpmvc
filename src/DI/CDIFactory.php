@@ -49,5 +49,18 @@ class CDIFactory extends CDIFactoryDefault
             $controller->setDI($this);
             return $controller;
         });
+
+        // Request-recorder service
+        $this->set('recorder', function() {
+            $dbh = new \Kajja\Recorder\RequestDatabase();
+            $dbh->setOptions([
+                'dsn'           => 'sqlite:' . ANAX_APP_PATH . '.htphpmvc.sqlite',
+                'fetch_mode'    => \PDO::FETCH_ASSOC
+                ]);
+            $dbh->connect();
+            $formatter = new \Kajja\Recorder\HTMLFormatter();
+            $recorder = new \Kajja\Recorder\RequestRecord($dbh, $formatter);
+            return $recorder;
+        });
     }
 }

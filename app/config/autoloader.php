@@ -20,7 +20,6 @@ call_user_func(function() {
 });
 
 
-
 /**
  * Including composer autoloader if available.
  *

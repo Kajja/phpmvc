@@ -11,6 +11,13 @@ $di->set('ThemeController', function() use ($di) {
     return $controller;
 });
 
+// Starts the session
+$app->session;
+
+// Saving Http request info
+$app->recorder->save(['/Anax-MVC/webroot/records']);
+
+
 // Defining routes
 
 // Default route
@@ -131,6 +138,22 @@ $app->router->add('redovisning/kmom4', function() use ($app) {
     
 });
 
+// 'Redovisning/Kmom5' route
+$app->router->add('redovisning/kmom5', function() use ($app) {
+
+    $app->theme->setTitle('Redovisning');
+    $app->theme->setVariable('bodyClasses', 'page-container');
+
+    $app->views->add('me/page', [
+        'content' => $app->textFilter->doFilter($app->fileContent->get('kmom5.md'), 'shortcode, markdown'),
+        'byline' => $app->textFilter->doFilter($app->fileContent->get('byline.md'), 'shortcode, markdown'),
+    ]);
+
+    // Adds the possibility to post comments on the page
+    \mife\Comment\CommentSetup::initComments($app);
+    
+});
+
 // 'Kod' route
 $app->router->add('source', function() use ($app) {
 
@@ -147,6 +170,28 @@ $app->router->add('source', function() use ($app) {
     $app->views->add('me/source', ['content' => $source->View(),]);
 });
 
+$app->router->add('records', function() use ($app){
+
+    $app->theme->setTitle('Sparade requests');
+    $app->theme->setVariable('bodyClasses', 'page-container');
+
+
+
+    $res = $app->recorder->getRecords();
+
+    $url = $app->url->create('records/clear');
+    $res = "<a href='$url'>Ta bort sparade requests</a>" . $res;
+ 
+    $app->views->add('me/page', [
+        'content' => $res
+    ]);
+});
+
+$app->router->add('records/clear', function() use ($app){
+
+    $app->recorder->clearRecords();
+    $app->response->redirect($app->url->create('records'));
+});
 
 // Using a app-specific theme configuration (overrides any earlier config-file specified)
 $app->theme->configure(ANAX_APP_PATH . 'config/theme-kajja.php');
