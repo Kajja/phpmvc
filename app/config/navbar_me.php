@@ -55,6 +55,11 @@ return [
                         'url'   => 'redovisning/kmom4',  
                         'title' => 'Kursmoment 4'
                     ],
+                    'item 5'  => [
+                        'text'  => 'Kmom5',   
+                        'url'   => 'redovisning/kmom5',  
+                        'title' => 'Kursmoment 5'
+                    ],
                 ],
             ],
         ],
@@ -109,10 +114,16 @@ return [
                 ]
             ]
         ],
+
+        'module' => [
+            'text'  =>'Modul', 
+            'url'   =>'records',
+            'title' => 'Modul',
+        ],
  
         'source' => [
-            'text'  =>'Källkod', 
-            'url'   =>'source',  
+            'text'  =>'Källkod',
+            'url'   =>'source',
             'title' => 'Källkod'
         ]
     ],

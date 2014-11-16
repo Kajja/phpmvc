@@ -180,5 +180,44 @@
             "module",
             "mvc"
         ]
+    },
+    {
+        "name": "kajja/requestrecorder",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Kajja/requestrecorder.git",
+            "reference": "6efa6cb7e1c70bf112c947ea8eaa67112975bd83"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Kajja/requestrecorder/zipball/6efa6cb7e1c70bf112c947ea8eaa67112975bd83",
+            "reference": "6efa6cb7e1c70bf112c947ea8eaa67112975bd83",
+            "shasum": ""
+        },
+        "require": {
+            "mos/cdatabase": "dev-master",
+            "php": ">=5.4"
+        },
+        "time": "2014-11-15 21:20:39",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Kajja\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Mikael Feuk",
+                "role": "Developer"
+            }
+        ],
+        "description": "PHP classes to store and retrieve HTTP-request info"
     }
 ]

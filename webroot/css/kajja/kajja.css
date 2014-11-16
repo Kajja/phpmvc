@@ -2502,7 +2502,7 @@ div .comment .button {
     display: none;
   }
 }
-@media (min-width: 640px) {
+@media (min-width: 710px) {
   .navbar > ul > li:not(:first-child) {
     display: inline-block;
   }

@@ -1,4 +1,4 @@
-a:4:{s:4:"root";s:19:"../kajja/kajja.less";s:8:"compiled";s:39735:"@import url(http://fonts.googleapis.com/css?family=Oldenburg);
+@import url(http://fonts.googleapis.com/css?family=Oldenburg);
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -1867,18 +1867,15 @@ body:after {
 .fixedNav {
   position: fixed;
   top: 0px;
-  max-width: 800px;
+  max-width: 960px;
   margin: 0 auto;
   width: 100%;
-}
-body.page-container #wrapper {
-  margin-top: 88px;
 }
 #wrapper {
   margin: 0 auto;
   width: 100%;
-  max-width: 800px;
-  font-family: 'Oldenburg', sans-serif;
+  max-width: 960px;
+  font-family: Verdana, 'Oldenburg', sans-serif;
   *zoom: 1;
 }
 #wrapper:before,
@@ -1904,8 +1901,8 @@ nav,
 main {
   display: inline;
   float: left;
-  width: 97.222222222222%;
-  margin: 0 1.3888888888889%;
+  width: 97.916666666667%;
+  margin: 0 1.0416666666667%;
   margin-bottom: 22px;
 }
 #panel-col-1,
@@ -1914,8 +1911,8 @@ main {
 #panel-col-4 {
   display: inline;
   float: left;
-  width: 97.222222222222%;
-  margin: 0 1.3888888888889%;
+  width: 97.916666666667%;
+  margin: 0 1.0416666666667%;
   margin-bottom: 22px;
 }
 #footer-col-1,
@@ -1923,8 +1920,8 @@ main {
 #footer-col-3 {
   display: inline;
   float: left;
-  width: 97.222222222222%;
-  margin: 0 1.3888888888889%;
+  width: 97.916666666667%;
+  margin: 0 1.0416666666667%;
   margin-bottom: 22px;
 }
 #wrap-panel-col,
@@ -1957,8 +1954,8 @@ main {
 #footer {
   display: inline;
   float: left;
-  width: 97.222222222222%;
-  margin: 0 1.3888888888889%;
+  width: 97.916666666667%;
+  margin: 0 1.0416666666667%;
   margin-bottom: 22px;
 }
 .navbar > ul > li:not(:first-child) {
@@ -1992,7 +1989,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Oldenburg', sans-serif;
+  font-family: Verdana, 'Oldenburg', sans-serif;
   margin-top: 0;
   margin-bottom: 22px;
 }
@@ -2235,7 +2232,7 @@ hr {
   border-bottom-right-radius: 0.5em;
   border-bottom-left-radius: 0.5em;
   background-color: white;
-  font-family: 'Oldenburg', sans-serif;
+  font-family: Verdana, 'Oldenburg', sans-serif;
 }
 .thin {
   height: 66px;
@@ -2352,13 +2349,6 @@ div .comment .button {
   font-weight: normal;
   font-color: grey;
 }
-#nav {
-  position: fixed;
-  top: 0px;
-  max-width: 800px;
-  margin: 0 auto;
-  width: 100%;
-}
 #navbar {
   margin-bottom: 20px;
 }
@@ -2427,6 +2417,27 @@ div .comment .button {
   padding: 88px 22px 22px 22px;
   box-shadow: 2px 2px 3px #85795b;
 }
+body.region-test header,
+body.region-test #alert,
+body.region-test #flash,
+body.region-test main,
+body.region-test #panel-col-1,
+body.region-test #panel-col-2,
+body.region-test #panel-col-3,
+body.region-test #panel-col-4,
+body.region-test #footer-col-1,
+body.region-test #footer-col-2,
+body.region-test #footer-col-3,
+body.region-test #footer {
+  height: 44px;
+  background-color: pink;
+}
+header {
+  height: 44px;
+}
+body.grid #wrapper {
+  background-image: url(http://dbwebb.se/image/tema/grid_12_60_20.png);
+}
 @media (max-width: 480px) {
   #panel-col-1,
   #panel-col-2,
@@ -2434,8 +2445,8 @@ div .comment .button {
   #panel-col-4 {
     display: inline;
     float: left;
-    width: 97.222222222222%;
-    margin: 0 1.3888888888889%;
+    width: 97.916666666667%;
+    margin: 0 1.0416666666667%;
     margin-bottom: 22px;
   }
   #footer-col-1,
@@ -2443,8 +2454,8 @@ div .comment .button {
   #footer-col-3 {
     display: inline;
     float: left;
-    width: 97.222222222222%;
-    margin: 0 1.3888888888889%;
+    width: 97.916666666667%;
+    margin: 0 1.0416666666667%;
     margin-bottom: 22px;
   }
   .panel #figure {
@@ -2456,8 +2467,8 @@ div .comment .button {
   header .sitetitle {
     display: inline;
     float: left;
-    width: 97.222222222222%;
-    margin: 0 1.3888888888889%;
+    width: 97.916666666667%;
+    margin: 0 1.0416666666667%;
   }
   header .siteslogan {
     display: none;
@@ -2470,8 +2481,8 @@ div .comment .button {
   #panel-col-4 {
     display: inline;
     float: left;
-    width: 47.222222222222%;
-    margin: 0 1.3888888888889%;
+    width: 47.916666666667%;
+    margin: 0 1.0416666666667%;
     margin-bottom: 22px;
   }
   #footer-col-1,
@@ -2479,8 +2490,8 @@ div .comment .button {
   #footer-col-3 {
     display: inline;
     float: left;
-    width: 97.222222222222%;
-    margin: 0 1.3888888888889%;
+    width: 97.916666666667%;
+    margin: 0 1.0416666666667%;
     margin-bottom: 22px;
   }
   .panel #figure {
@@ -2489,20 +2500,20 @@ div .comment .button {
   header .sitelogo {
     display: inline;
     float: left;
-    width: 13.888888888889%;
-    margin: 0 1.3888888888889%;
+    width: 14.583333333333%;
+    margin: 0 1.0416666666667%;
   }
   header .sitetitle {
     display: inline;
     float: left;
-    width: 63.888888888889%;
-    margin: 0 1.3888888888889%;
+    width: 64.583333333333%;
+    margin: 0 1.0416666666667%;
   }
   header .siteslogan {
     display: none;
   }
 }
-@media (min-width: 710px) {
+@media (min-width: 580px) {
   .navbar > ul > li:not(:first-child) {
     display: inline-block;
   }
@@ -2514,8 +2525,8 @@ div .comment .button {
   #panel-col-4 {
     display: inline;
     float: left;
-    width: 22.222222222222%;
-    margin: 0 1.3888888888889%;
+    width: 22.916666666667%;
+    margin: 0 1.0416666666667%;
     margin-bottom: 22px;
   }
   #footer-col-1,
@@ -2523,9 +2534,8 @@ div .comment .button {
   #footer-col-3 {
     display: inline;
     float: left;
-    width: 30.555555555556%;
-    margin: 0 1.3888888888889%;
+    width: 31.25%;
+    margin: 0 1.0416666666667%;
     margin-bottom: 22px;
   }
 }
-";s:5:"files";a:30:{s:53:"C:\xampp\htdocs\Anax-MVC\webroot\css\kajja\kajja.less";i:1413369222;s:57:"C:\xampp\htdocs\Anax-MVC\webroot\css\kajja\normalize.less";i:1413369223;s:84:"C:\xampp\htdocs\Anax-MVC\webroot\css\fonts\font-awesome-4.2.0\less\font-awesome.less";i:1412770031;s:81:"C:\xampp\htdocs\Anax-MVC\webroot\css\fonts\font-awesome-4.2.0\less\variables.less";i:1412770031;s:78:"C:\xampp\htdocs\Anax-MVC\webroot\css\fonts\font-awesome-4.2.0\less\mixins.less";i:1412770031;s:76:"C:\xampp\htdocs\Anax-MVC\webroot\css\fonts\font-awesome-4.2.0\less\path.less";i:1412770031;s:76:"C:\xampp\htdocs\Anax-MVC\webroot\css\fonts\font-awesome-4.2.0\less\core.less";i:1412770031;s:78:"C:\xampp\htdocs\Anax-MVC\webroot\css\fonts\font-awesome-4.2.0\less\larger.less";i:1412770031;s:83:"C:\xampp\htdocs\Anax-MVC\webroot\css\fonts\font-awesome-4.2.0\less\fixed-width.less";i:1412770031;s:76:"C:\xampp\htdocs\Anax-MVC\webroot\css\fonts\font-awesome-4.2.0\less\list.less";i:1412770031;s:87:"C:\xampp\htdocs\Anax-MVC\webroot\css\fonts\font-awesome-4.2.0\less\bordered-pulled.less";i:1412770031;s:80:"C:\xampp\htdocs\Anax-MVC\webroot\css\fonts\font-awesome-4.2.0\less\spinning.less";i:1412770031;s:87:"C:\xampp\htdocs\Anax-MVC\webroot\css\fonts\font-awesome-4.2.0\less\rotated-flipped.less";i:1412770031;s:79:"C:\xampp\htdocs\Anax-MVC\webroot\css\fonts\font-awesome-4.2.0\less\stacked.less";i:1412770031;s:77:"C:\xampp\htdocs\Anax-MVC\webroot\css\fonts\font-awesome-4.2.0\less\icons.less";i:1412770031;s:52:"C:\xampp\htdocs\Anax-MVC\webroot\css\kajja\grid.less";i:1413369222;s:58:"C:\xampp\htdocs\Anax-MVC\webroot\css\kajja\css3mixins.less";i:1413369222;s:54:"C:\xampp\htdocs\Anax-MVC\webroot\css\kajja\mixins.less";i:1413369223;s:60:"C:\xampp\htdocs\Anax-MVC\webroot\css\kajja\kajja-mixins.less";i:1413369222;s:57:"C:\xampp\htdocs\Anax-MVC\webroot\css\kajja\variables.less";i:1413369223;s:57:"C:\xampp\htdocs\Anax-MVC\webroot\css\kajja\structure.less";i:1413369223;s:58:"C:\xampp\htdocs\Anax-MVC\webroot\css\kajja\typography.less";i:1413369223;s:54:"C:\xampp\htdocs\Anax-MVC\webroot\css\kajja\header.less";i:1413369222;s:52:"C:\xampp\htdocs\Anax-MVC\webroot\css\kajja\page.less";i:1415372875;s:53:"C:\xampp\htdocs\Anax-MVC\webroot\css\kajja\panel.less";i:1413369223;s:54:"C:\xampp\htdocs\Anax-MVC\webroot\css\kajja\footer.less";i:1413369222;s:56:"C:\xampp\htdocs\Anax-MVC\webroot\css\kajja\comments.less";i:1413369222;s:54:"C:\xampp\htdocs\Anax-MVC\webroot\css\kajja\navbar.less";i:1413369223;s:57:"C:\xampp\htdocs\Anax-MVC\webroot\css\kajja\jumbotron.less";i:1413369222;s:58:"C:\xampp\htdocs\Anax-MVC\webroot\css\kajja\responsive.less";i:1416134430;}s:7:"updated";i:1416134435;}
