@@ -15,8 +15,7 @@ $di->set('ThemeController', function() use ($di) {
 $app->session;
 
 // Saving Http request info
-$app->recorder->save(['/Anax-MVC/webroot/records']);
-
+$app->recorder->save([$app->url->asset('records')]);
 
 // Defining routes
 
