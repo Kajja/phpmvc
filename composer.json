@@ -20,7 +20,7 @@
         "leafo/lessphp": "0.4.0",
         "mos/cform": "2.*@dev",
         "mos/cdatabase": "dev-master",
-        "kajja/requestrecorder": ">=0.2"
+        "kajja/requestrecorder": "dev-master"
     },
     "require-dev": {
         "satooshi/php-coveralls": "dev-master"

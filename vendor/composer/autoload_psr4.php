@@ -7,6 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Phpmvc\\' => array($vendorDir . '/phpmvc/comment/src'),
-    'Mos\\' => array($vendorDir . '/mos/cform/src', $vendorDir . '/mos/cdatabase/src'),
+    'Mos\\' => array($vendorDir . '/mos/cdatabase/src', $vendorDir . '/mos/cform/src'),
     'Kajja\\' => array($vendorDir . '/kajja/requestrecorder/src'),
 );

@@ -59,7 +59,7 @@ class CDIFactory extends CDIFactoryDefault
                 ]);
             $dbh->connect();
             $formatter = new \Kajja\Recorder\HTMLFormatter();
-            $recorder = new \Kajja\Recorder\RequestRecord($dbh, $formatter);
+            $recorder = new \Kajja\Recorder\RequestRecordAnax($dbh, $formatter, $this);
             return $recorder;
         });
     }
