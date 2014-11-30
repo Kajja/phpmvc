@@ -1,7 +1,7 @@
 Kmom6: Verktyg och Continuous integration
 -----------------------------------------
 
-Det här var väldigt kul att lära sig, speciellt unit testing. Har flera gånger försökt komma igång med unit testing, men det är svårt att motivera sig ibland när tiden är knapp. Provade i ett projekt och såg nyttan ganska snabbt, man blev trygg med att det fungerade, men i nästa kodprojekt så blev det inget igen. Tror att det handlade om att jag inte var tillräckligt bra på det, så det kändes som en stoppkloss. Efter den här uppgiften känner jag mig mycket mer insatt: har gjort mocks, testat mot databas, ... Ska försöka köra TDD framöver och se hur det är.
+Det här var väldigt kul att lära sig, speciellt unit testing. Har flera gånger försökt komma igång med unit testing, men det är svårt att motivera sig ibland när tiden är knapp. Provade i ett projekt och såg nyttan ganska snabbt, man blev trygg med att det fungerade (när man hade gjort ändringar), men i nästa kodprojekt så blev det inget igen. Tror att det handlade om att jag inte var tillräckligt bra på det, så det kändes som en stoppkloss. Efter den här uppgiften känner jag mig mycket mer insatt: har gjort mocks, testat mot databas, ... Ska försöka köra TDD framöver och se hur det är.
 
 Tycker dock dokumentationen av PHPUnit är lite sisådär. Försökte hitta vilka tester man kan göra i mockobjekt->with(<test>), men hittade inget. Det verkar som att man måste in i PHPUnit-koden och titta.
 
