@@ -46,7 +46,7 @@ Nej, inte 10 i kodkvalitet.
 
 Det kan bli lite frustrerande när man behöver ha "fixture":n, på plats innan man kan köra sina tester. Framförallt när jag testade mot Anax märkte jag hur mycket jobb det blev. Gick på linjen att isolera testfallen och inte köra mot den riktiga koden som det man testar är beroende av. Dels så kan det vara lite svårt att få all den kod man är beroende av på plats, och dels blir det ju mer av integrationstestning (som ju iof också behöver göras). Kan tänka mig att det är bra att inkludera testfallen i sin modul, så de som ska använda den kan köra dem i sin egen miljö (kan ju skilja mycket mellan miljöer).
 
-Att man har testfall som täcker in hela koden behöver ju inte betyda att den fungerar felfritt:) Testfallen kan ju vara mer eller mindre avancerade, ex. man kanske bara testar mot en typ av databaser, har enkla varianter på indata till en metod man provar osv.
+Att man har testfall som täcker in hela koden behöver ju inte betyda att den fungerar felfritt:) Testfallen kan ju vara mer eller mindre avancerade, ex. man kanske bara testar mot en typ av databas, har enkla varianter på indata till en metod man provar osv.
 
 [Git](https://github.com/Kajja/requestrecorder)
 [Travis](https://travis-ci.org/Kajja/requestrecorder)
