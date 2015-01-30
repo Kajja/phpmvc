@@ -65,6 +65,11 @@ return [
                         'url'   => 'redovisning/kmom6',  
                         'title' => 'Kursmoment 6'
                     ],
+                    'item 7'  => [
+                        'text'  => 'Projekt',   
+                        'url'   => 'redovisning/proj',  
+                        'title' => 'Projekt'
+                    ]
                 ],
             ],
         ],

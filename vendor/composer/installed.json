@@ -188,19 +188,19 @@
         "source": {
             "type": "git",
             "url": "https://github.com/Kajja/requestrecorder.git",
-            "reference": "667942393b62cf2470426c16b1be6de4ba1f204b"
+            "reference": "83aa78aba87928772b9b7bca0e23a08d599069cf"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Kajja/requestrecorder/zipball/667942393b62cf2470426c16b1be6de4ba1f204b",
-            "reference": "667942393b62cf2470426c16b1be6de4ba1f204b",
+            "url": "https://api.github.com/repos/Kajja/requestrecorder/zipball/83aa78aba87928772b9b7bca0e23a08d599069cf",
+            "reference": "83aa78aba87928772b9b7bca0e23a08d599069cf",
             "shasum": ""
         },
         "require": {
             "mos/cdatabase": "dev-master",
             "php": ">=5.4"
         },
-        "time": "2014-11-30 11:27:35",
+        "time": "2014-12-03 20:32:24",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

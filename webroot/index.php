@@ -169,6 +169,22 @@ $app->router->add('redovisning/kmom6', function() use ($app) {
     
 });
 
+// 'Redovisning/proj' route
+$app->router->add('redovisning/proj', function() use ($app) {
+
+    $app->theme->setTitle('Redovisning');
+    $app->theme->setVariable('bodyClasses', 'page-container');
+
+    $app->views->add('me/page', [
+        'content' => $app->textFilter->doFilter($app->fileContent->get('projekt.md'), 'shortcode, markdown'),
+        'byline' => $app->textFilter->doFilter($app->fileContent->get('byline.md'), 'shortcode, markdown'),
+    ]);
+
+    // Adds the possibility to post comments on the page
+    \mife\Comment\CommentSetup::initComments($app);
+    
+});
+
 // 'Kod' route
 $app->router->add('source', function() use ($app) {
 
